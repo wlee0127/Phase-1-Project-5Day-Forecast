@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="style.css" />
+        <title>5Day-Forecast</title>
+    </head>
+
+    <body>
+        <div class="container00">
+            <input name="location" type="text" id="inputlocation" />
+            <button type="button" onclick="weatherData()">
+            <img
+                src="https://cdn-icons-png.flaticon.com/512/954/954591.png" class="img01" />
+            </button>
+        </div>
+
+
+        <div class="container01">
+            <h4>
+            <span id="citylocation"></span><span id="country"></span>
+            </h4>
+            <h4>
+            <span id="currenttemp"></span><br>
+            <span id="date"></span><br>
+            <span id="time"></span>
+            </h4> 
+            
+            <img id="current01" src=""></img><br>
+            <span id="current01description"></span>
+        </div>
+
+
+    <script src="script.js"></script>
+    </body>
+</html>

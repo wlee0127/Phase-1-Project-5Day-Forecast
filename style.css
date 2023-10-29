@@ -1,0 +1,33 @@
+body {
+    align-items: center;
+    justify-content: center;
+}
+  
+.img01 {
+    border: none;
+    width:10px;
+    height:10px;
+    border-radius:10px;
+}
+
+.container00 {
+    align-items: center;
+    justify-content: center;
+    text-align:center;
+    padding-top: 25px;
+    border-radius:10px;
+}
+
+.container01.background {
+    font-family: 'Courier New', Courier, monospace;
+    align-items: center;
+    text-align:center;
+    width: 200px;
+    height: 220px;
+    background-color: #abbff1;
+    border-radius: 20px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+
+}
