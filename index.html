@@ -9,8 +9,8 @@
     </head>
 
     <body>
-        <div class="container00">
-            <input name="location" type="text" id="inputlocation" />
+        <div class="container" id="searchContainer">
+            <input name="location" type="text" id="cityInput" />
             <button type="button" onclick="weatherData()">
             <img
                 src="https://cdn-icons-png.flaticon.com/512/954/954591.png" class="img01" />
@@ -18,18 +18,17 @@
         </div>
 
 
-        <div class="container01">
+        <div class="card" id="weatherContainer01">
             <h4>
-            <span id="citylocation"></span><span id="country"></span>
+                <p><span id="citylocation"></span><span id="country"></span></p>
+                <img id="current01" src=""></img>
+                <p><span id="current01description"></span></p>
+                <p><span id="maxTemp"></span></p>
+                <p><span id="minTemp"></span></p>
+                <p><span id="date"></span></p>
             </h4>
-            <h4>
-            <span id="currenttemp"></span><br>
-            <span id="date"></span><br>
-            <span id="time"></span>
-            </h4> 
-            
-            <img id="current01" src=""></img><br>
-            <span id="current01description"></span>
+    
+                 
         </div>
 
 
