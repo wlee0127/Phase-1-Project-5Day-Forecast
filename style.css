@@ -32,7 +32,7 @@ body {
     align-items: center;
     text-align:center;
     width: 200px;
-    height: 220px;
+    height: 250px;
     background-color: #abbff1;
     border-radius: 20px;
     justify-content: center;
@@ -40,6 +40,70 @@ body {
     margin-right: auto;
     position: absolute;
     left: 42.95%;
-    top: 9%;
+    top: 11%;
 
+}
+
+#weatherContainer02 {
+    font-family: 'Courier New', Courier, monospace;
+    align-items: center;
+    text-align:center;
+    width: 200px;
+    height: 100px;
+    background-color: #abbff1;
+    border-radius: 20px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    left: 42.95%;
+    top: 49%;
+}
+
+#weatherContainer03 {
+    font-family: 'Courier New', Courier, monospace;
+    align-items: center;
+    text-align:center;
+    width: 200px;
+    height: 100px;
+    background-color: #abbff1;
+    border-radius: 20px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    left: 42.95%;
+    top: 66.5%;
+}
+
+#weatherContainer04 {
+    font-family: 'Courier New', Courier, monospace;
+    align-items: center;
+    text-align:center;
+    width: 200px;
+    height: 100px;
+    background-color: #abbff1;
+    border-radius: 20px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    left: 42.95%;
+    top: 84%;
+}
+
+#weatherContainer05 {
+    font-family: 'Courier New', Courier, monospace;
+    align-items: center;
+    text-align:center;
+    width: 200px;
+    height: 100px;
+    background-color: #abbff1;
+    border-radius: 20px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    left: 42.95%;
+    top: 101.5%;
 }

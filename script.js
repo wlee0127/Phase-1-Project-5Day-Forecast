@@ -25,6 +25,10 @@ function weatherData() {
         let groupedDateAndTemp = groupDateAndTemp(data);
     
         card0(data,groupedDateAndTemp);
+        card2(groupedDateAndTemp);
+        card3(groupedDateAndTemp);
+        card4(groupedDateAndTemp);
+        card5(groupedDateAndTemp);
      })
      .catch((error) => console.log(error)) 
 }
@@ -105,8 +109,8 @@ function average(array) {
     return average;
 }
 
-function maxTemp(groupedDateAndTemp) {
-    let array1 = groupedDateAndTemp[0].maxTemp;
+function maxTemp(i,groupedDateAndTemp) {
+    let array1 = groupedDateAndTemp[i].maxTemp;
     let max = Math.max(...array1);
     max = (max-273.15)*(9/5)+32;
     max = max.toString();
@@ -114,8 +118,8 @@ function maxTemp(groupedDateAndTemp) {
     return max;
 }
 
-function minTemp(groupedDateAndTemp) {
-    let array1 = groupedDateAndTemp[0].minTemp;
+function minTemp(i,groupedDateAndTemp) {
+    let array1 = groupedDateAndTemp[i].minTemp;
     let max = Math.min(...array1);
     max = (max-273.15)*(9/5)+32;
     max = max.toString();
@@ -126,6 +130,7 @@ function minTemp(groupedDateAndTemp) {
 function card0(data,groupedDateAndTemp) {
     let icon01 = data.list[0].weather[0].icon;
     let current01src="https://openweathermap.org/img/wn/"+icon01+"@2x.png";
+    let i = 0;
 
     const newDiv = document.createElement('div');
     newDiv.class = "card";
@@ -134,6 +139,11 @@ function card0(data,groupedDateAndTemp) {
 
     const heading3 = document.createElement("h3");
     newDiv.appendChild(heading3);
+
+    const p02 = document.createElement("p");
+    p02.id = "date0";
+    p02.textContent = groupedDateAndTemp[0].date;
+    heading3.appendChild(p02);
 
     const span00 = document.createElement("span");
     span00.id = "citylocation";
@@ -155,18 +165,13 @@ function card0(data,groupedDateAndTemp) {
 
     const p00 = document.createElement("p");
     p00.id = "maxTemp";
-    p00.textContent = `Max: ${maxTemp(groupedDateAndTemp)} F`;
+    p00.textContent = `Max: ${maxTemp(i,groupedDateAndTemp)} F`;
     heading5.appendChild(p00);
 
     const p01 = document.createElement("p");
     p01.id = "minTemp";
-    p01.textContent = `Min: ${minTemp(groupedDateAndTemp)} F`;
+    p01.textContent = `Min: ${minTemp(i,groupedDateAndTemp)} F`;
     heading5.appendChild(p01);
-
-    const p02 = document.createElement("p");
-    p02.id = "date0";
-    p02.textContent = groupedDateAndTemp[0].date;
-    heading5.appendChild(p02);
 
     let dragging = false;
     //these variables holds the displace value of the drag object.  Will be of use in the drag function.
@@ -197,15 +202,118 @@ function card0(data,groupedDateAndTemp) {
     });
 }
 
-function card1(data,groupedDateAndTemp) {
-    let date1 = groupedDateAndTemp[1].date;
-    let date0String = date0.substr(0,10);
+function card2(groupedDateAndTemp) {
+    let i = 1;
 
-    document.getElementById("date").textContent = date0String;
-    let array1 = groupedDateAndTemp[0].maxTemp;
-    let array2 = groupedDateAndTemp[0].minTemp;
-    let max = Math.max(...array1);
-    let min = Math.min(...array2);
-    document.getElementById("maxTemp").textContent = `Max: ${kelvinToFahr(max)} F`;
-    document.getElementById("minTemp").textContent = `Min: ${kelvinToFahr(min)} F`;
+    const newDiv2 = document.createElement('div');
+    newDiv2.class = "forecastCard";
+    newDiv2.id = "weatherContainer02";
+    document.body.appendChild(newDiv2);
+
+    const heading5 = document.createElement("h5");
+    newDiv2.appendChild(heading5);
+
+    const p02 = document.createElement("p");
+    p02.id = "date2";
+    p02.textContent = groupedDateAndTemp[1].date;
+    heading5.appendChild(p02);
+
+    const p00 = document.createElement("p");
+    p00.id = "maxTemp2";
+    p00.textContent = `Max: ${maxTemp(i,groupedDateAndTemp)} F`;
+    heading5.appendChild(p00);
+
+    const p01 = document.createElement("p");
+    p01.id = "minTemp2";
+    p01.textContent = `Min: ${minTemp(i,groupedDateAndTemp)} F`;
+    heading5.appendChild(p01);
+
+    
+}
+
+function card3(groupedDateAndTemp) {
+    let i = 2;
+
+    const newDiv2 = document.createElement('div');
+    newDiv2.class = "forecastCard";
+    newDiv2.id = "weatherContainer03";
+    document.body.appendChild(newDiv2);
+
+    const heading5 = document.createElement("h5");
+    newDiv2.appendChild(heading5);
+
+    const p02 = document.createElement("p");
+    p02.id = "date3";
+    p02.textContent = groupedDateAndTemp[i].date;
+    heading5.appendChild(p02);
+
+    const p00 = document.createElement("p");
+    p00.id = "maxTemp3";
+    p00.textContent = `Max: ${maxTemp(i,groupedDateAndTemp)} F`;
+    heading5.appendChild(p00);
+
+    const p01 = document.createElement("p");
+    p01.id = "minTemp3";
+    p01.textContent = `Min: ${minTemp(i,groupedDateAndTemp)} F`;
+    heading5.appendChild(p01);
+
+    
+}
+
+function card4(groupedDateAndTemp) {
+    let i = 3;
+
+    const newDiv2 = document.createElement('div');
+    newDiv2.class = "forecastCard";
+    newDiv2.id = "weatherContainer04";
+    document.body.appendChild(newDiv2);
+
+    const heading5 = document.createElement("h5");
+    newDiv2.appendChild(heading5);
+
+    const p02 = document.createElement("p");
+    p02.id = "date4";
+    p02.textContent = groupedDateAndTemp[i].date;
+    heading5.appendChild(p02);
+
+    const p00 = document.createElement("p");
+    p00.id = "maxTemp4";
+    p00.textContent = `Max: ${maxTemp(i,groupedDateAndTemp)} F`;
+    heading5.appendChild(p00);
+
+    const p01 = document.createElement("p");
+    p01.id = "minTemp4";
+    p01.textContent = `Min: ${minTemp(i,groupedDateAndTemp)} F`;
+    heading5.appendChild(p01);
+
+    
+}
+
+function card5(groupedDateAndTemp) {
+    let i = 4;
+
+    const newDiv2 = document.createElement('div');
+    newDiv2.class = "forecastCard";
+    newDiv2.id = "weatherContainer05";
+    document.body.appendChild(newDiv2);
+
+    const heading5 = document.createElement("h5");
+    newDiv2.appendChild(heading5);
+
+    const p02 = document.createElement("p");
+    p02.id = "date5";
+    p02.textContent = groupedDateAndTemp[i].date;
+    heading5.appendChild(p02);
+
+    const p00 = document.createElement("p");
+    p00.id = "maxTemp5";
+    p00.textContent = `Max: ${maxTemp(i,groupedDateAndTemp)} F`;
+    heading5.appendChild(p00);
+
+    const p01 = document.createElement("p");
+    p01.id = "minTemp5";
+    p01.textContent = `Min: ${minTemp(i,groupedDateAndTemp)} F`;
+    heading5.appendChild(p01);
+
+    
 }
