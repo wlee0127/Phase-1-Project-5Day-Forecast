@@ -1,3 +1,10 @@
+//declare a "darg" variable that will be of use in the drag function
+let dragging = false;
+//these variables holds the displace value of the drag object.  Will be of use in the drag function.
+let offsetX = null;
+let offsetY = null;
+const newDiv = document.getElementById("weatherContainer01");
+
 
 function weatherData(){
     //5 day forecast API
@@ -16,14 +23,13 @@ function weatherData(){
      }) 
      .then((data) => {
         let groupedDateAndTemp = groupDateAndTemp(data);
-        
-
+    
         card0(data,groupedDateAndTemp);
      })
      .catch((error) => console.log(error)) 
     }
 
-document.addEventListener('keydown',function(event){
+document.addEventListener("keydown",function(event){
     const pressedKey=event.key;
     if (pressedKey==='Enter'){
         weatherData();
@@ -168,6 +174,34 @@ function card0(data,groupedDateAndTemp) {
     p02.id = "date0";
     p02.textContent = groupedDateAndTemp[0].date;
     heading5.appendChild(p02);
+
+    let dragging = false;
+    //these variables holds the displace value of the drag object.  Will be of use in the drag function.
+    let offsetX = null;
+    let offsetY = null;
+
+    newDiv.addEventListener("mousedown", function(event){
+        dragging = true;
+        //calculate offset x and y value.  These values will be passed to mousemove event listener.
+        offsetX = event.clientX-newDiv.getBoundingClientRect().left;
+        offsetY = event.clientY-newDiv.getBoundingClientRect().top;
+    });
+    
+    document.addEventListener("mousemove", function(event){
+        if (dragging) {
+            let x = event.clientX-offsetX;
+            let y = event.clientY-offsetY;
+    
+            newDiv.style.left = x+"px";
+            newDiv.style.top = y+"px";
+        }else{
+            return;
+        }
+    });
+    
+    document.addEventListener("mouseup", function(event){
+        dragging = false;
+    });
 }
 
 function card1(data,groupedDateAndTemp) {
