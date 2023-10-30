@@ -1,12 +1,12 @@
-//declare a "darg" variable that will be of use in the drag function
-let dragging = false;
-//these variables holds the displace value of the drag object.  Will be of use in the drag function.
-let offsetX = null;
-let offsetY = null;
-const newDiv = document.getElementById("weatherContainer01");
 
+document.addEventListener("keydown",function(event){
+    const pressedKey=event.key;
+    if (pressedKey==='Enter'){
+        weatherData();
+    }
+});
 
-function weatherData(){
+function weatherData() {
     //5 day forecast API
     const api_weather = "https://api.openweathermap.org/data/2.5/forecast?q=";
     //API key
@@ -27,14 +27,7 @@ function weatherData(){
         card0(data,groupedDateAndTemp);
      })
      .catch((error) => console.log(error)) 
-    }
-
-document.addEventListener("keydown",function(event){
-    const pressedKey=event.key;
-    if (pressedKey==='Enter'){
-        weatherData();
-    }
-});
+}
 
 function groupDateAndTemp(data) {
     let object = data.list;
