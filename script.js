@@ -18,59 +18,12 @@ function weatherData(){
         let groupedDateAndTemp = groupDateAndTemp(data);
         let icon01 = data.list[0].weather[0].icon;
         let current01src="https://openweathermap.org/img/wn/"+icon01+"@2x.png";
-        let date0 = groupedDateAndTemp[0].date;
-        let date0String = date0.substr(0,10);
-
-        document.getElementById("citylocation").textContent = `${data.city.name},`;
-        document.getElementById("country").textContent = data.city.country;
         document.getElementById("current01").src= current01src;
         document.getElementById("current01description").textContent = data.list[0].weather[0].description;
-        document.getElementById("date").textContent = date0String;
+
+        card0(data,groupedDateAndTemp);
      })
-     .catch((error) => console.log(error))
-
-    /*let result = (api_weather+location+"&appid="+api_key);
-    let response = await fetch(result);
-    var data = await response.json();
-    debugger;
-    let icon01 = data.list[0].weather[0].icon;
-    let current01src="https://openweathermap.org/img/wn/"+icon01+"@2x.png";
-    let date01 = data.list[0].dt_txt;
-    let date01String = date01.substr(0,10);
-
-    document.getElementById("citylocation").textContent = `${data.city.name},`;
-    document.getElementById("country").textContent = data.city.country;
-    document.getElementById("current01").src= current01src;
-    document.getElementById("current01description").textContent = data.list[0].weather[0].description;
-    document.getElementById("maxTemp").textContent = //Average maxTemp of the day;
-    document.getElementById("minTemp").textContent = //averate mintemp of the day;
-    document.getElementById("date").textContent = date01String;
-    */
-/*
-    
-        //divElement01.classList.toggle('background');
-        document.getElementById("citylocation").innerHTML = data.name;
-        document.getElementById("country").innerHTML = ", "+data.sys.country;
-        document.getElementById("currenttemp").innerHTML = "Outside: "+((((data.main.temp)-273.15)*(9/5)+32).toFixed(0))+" \xB0F";
-        document.getElementById("date").innerHTML=dateResult;
-        document.getElementById("time").innerHTML=localeTime;
-        document.getElementById("current01").src= current01src;
-        document.getElementById("current01description").innerHTML = data.weather[0]?.description;
-      
-        let future = (api_forecast+location+"&appid="+api_key);
-        let response01 = await fetch(future);
-        var data01 = await response01.json();
-        
-        let date01Result = new Date((data01.list[8].dt)*1000).toLocaleDateString("en-US");
-        let date02Result = new Date((data01.list[15].dt)*1000).toLocaleDateString("en-US");
-        let date03Result = new Date((data01.list[22].dt)*1000).toLocaleDateString("en-US");
-        let date04Result = new Date((data01.list[29].dt)*1000).toLocaleDateString("en-US");
-        document.getElementById("date01").innerHTML = date01Result;
-        document.getElementById("date02").innerHTML = date02Result;
-        document.getElementById("date03").innerHTML = date03Result;
-        document.getElementById("date04").innerHTML = date04Result;
-
-        maxtempArray=[];*/
+     .catch((error) => console.log(error)) 
     }
 
 document.addEventListener('keydown',function(event){
@@ -144,4 +97,49 @@ function groupDateAndTemp(data) {
     
     }
     return groupedDateAndTemp;
+}
+
+function average(array) {
+    let sum = array.reduce(
+        (accumulator,current) => accumulator+current,
+        0,
+    );
+    let average = sum/array.length;
+    average = (average-273.15)*(9/5)+32;
+    return average;
+}
+
+function kelvinToFahr(temp) {
+    let result = (temp-273.15)*(9/5)+32;
+    result = result.toString();
+    result = result.substr(0,4);
+    return result;
+}
+
+function card0(data,groupedDateAndTemp) {
+    let date0 = groupedDateAndTemp[0].date;
+    let date0String = date0.substr(0,10);
+
+    document.getElementById("citylocation").textContent = `${data.city.name},`;
+    document.getElementById("country").textContent = data.city.country;
+    document.getElementById("date").textContent = date0String;
+    let array1 = groupedDateAndTemp[0].maxTemp;
+    let array2 = groupedDateAndTemp[0].minTemp;
+    let max = Math.max(...array1);
+    let min = Math.min(...array2);
+    document.getElementById("maxTemp").textContent = `Max: ${kelvinToFahr(max)} F`;
+    document.getElementById("minTemp").textContent = `Min: ${kelvinToFahr(min)} F`;
+}
+
+function card1(data,groupedDateAndTemp) {
+    let date1 = groupedDateAndTemp[1].date;
+    let date0String = date0.substr(0,10);
+
+    document.getElementById("date").textContent = date0String;
+    let array1 = groupedDateAndTemp[0].maxTemp;
+    let array2 = groupedDateAndTemp[0].minTemp;
+    let max = Math.max(...array1);
+    let min = Math.min(...array2);
+    document.getElementById("maxTemp").textContent = `Max: ${kelvinToFahr(max)} F`;
+    document.getElementById("minTemp").textContent = `Min: ${kelvinToFahr(min)} F`;
 }
