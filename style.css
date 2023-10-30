@@ -1,8 +1,11 @@
 body {
     align-items: center;
-    justify-content: center;
+    background-image: url("Global_network_generated.png");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: repeat;
+   
 }
-
   
 #img01 {
     border: none;
@@ -29,15 +32,15 @@ body {
 
 #weatherContainer01 {
     font-family: 'Courier New', Courier, monospace;
-    align-items: center;
+    /*align-items: center;*/
     text-align:center;
     width: 200px;
     height: 250px;
     background-color: #abbff1;
     border-radius: 20px;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
+    /*justify-content: center;
+    /*margin-left: auto;
+    margin-right: auto;*/
     position: absolute;
     left: 42.95%;
     top: 11%;
@@ -46,15 +49,15 @@ body {
 
 #weatherContainer02 {
     font-family: 'Courier New', Courier, monospace;
-    align-items: center;
+    /*align-items: center;*/
     text-align:center;
     width: 200px;
     height: 100px;
     background-color: #abbff1;
     border-radius: 20px;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
+    /*justify-content: center;
+    /*margin-left: auto;
+    margin-right: auto;*/
     position: absolute;
     left: 42.95%;
     top: 49%;
@@ -62,15 +65,15 @@ body {
 
 #weatherContainer03 {
     font-family: 'Courier New', Courier, monospace;
-    align-items: center;
+    /*align-items: center;*/
     text-align:center;
     width: 200px;
     height: 100px;
     background-color: #abbff1;
     border-radius: 20px;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
+    /*justify-content: center;
+    /*margin-left: auto;
+    margin-right: auto;*/
     position: absolute;
     left: 42.95%;
     top: 66.5%;
@@ -78,15 +81,15 @@ body {
 
 #weatherContainer04 {
     font-family: 'Courier New', Courier, monospace;
-    align-items: center;
+    /*align-items: center;*/
     text-align:center;
     width: 200px;
     height: 100px;
     background-color: #abbff1;
     border-radius: 20px;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
+    /*justify-content: center;
+    /*margin-left: auto;
+    margin-right: auto;*/
     position: absolute;
     left: 42.95%;
     top: 84%;
@@ -94,15 +97,15 @@ body {
 
 #weatherContainer05 {
     font-family: 'Courier New', Courier, monospace;
-    align-items: center;
+    /*align-items: center;*/
     text-align:center;
     width: 200px;
     height: 100px;
     background-color: #abbff1;
     border-radius: 20px;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
+    /*justify-content: center;
+    /*margin-left: auto;
+    margin-right: auto;*/
     position: absolute;
     left: 42.95%;
     top: 101.5%;

@@ -284,11 +284,18 @@ function card3(groupedDateAndTemp) {
     p01.textContent = `Min: ${minTemp(i,groupedDateAndTemp)} F`;
     heading5.appendChild(p01);
 
+    let dragging = false;
+    //these variables holds the displace value of the drag object.  Will be of use in the drag function.
+    let offsetX = null;
+    let offsetY = null;
+
     newDiv3.addEventListener("mousedown", function(event){
         dragging = true;
+        debugger;
         //calculate offset x and y value.  These values will be passed to mousemove event listener.
         offsetX = event.clientX-newDiv3.getBoundingClientRect().left;
         offsetY = event.clientY-newDiv3.getBoundingClientRect().top;
+        debugger;
     });
     
     document.addEventListener("mousemove", function(event){
@@ -334,6 +341,11 @@ function card4(groupedDateAndTemp) {
     p01.id = "minTemp4";
     p01.textContent = `Min: ${minTemp(i,groupedDateAndTemp)} F`;
     heading5.appendChild(p01);
+
+    let dragging = false;
+    //these variables holds the displace value of the drag object.  Will be of use in the drag function.
+    let offsetX = null;
+    let offsetY = null;
 
     newDiv4.addEventListener("mousedown", function(event){
         dragging = true;
@@ -385,6 +397,11 @@ function card5(groupedDateAndTemp) {
     p01.id = "minTemp5";
     p01.textContent = `Min: ${minTemp(i,groupedDateAndTemp)} F`;
     heading5.appendChild(p01);
+
+    let dragging = false;
+    //these variables holds the displace value of the drag object.  Will be of use in the drag function.
+    let offsetX = null;
+    let offsetY = null;
 
     newDiv5.addEventListener("mousedown", function(event){
         dragging = true;
