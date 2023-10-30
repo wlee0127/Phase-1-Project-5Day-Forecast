@@ -6,6 +6,7 @@ function weatherData(){
     const api_key = "640535654e67f478602e4d33c98a6724";
     //assign user input value to the "location" variable
     let location = document.getElementById("cityInput").value;
+    
 
     //api call #1 -- for current weather condition
     fetch(api_weather+location+"&appid="+api_key)
@@ -14,16 +15,17 @@ function weatherData(){
         else throw new Error(document.getElementById("citylocation").textContent = response.status + " try a different city");
      }) 
      .then((data) => {
+        let groupedDateAndTemp = groupDateAndTemp(data);
         let icon01 = data.list[0].weather[0].icon;
         let current01src="https://openweathermap.org/img/wn/"+icon01+"@2x.png";
-        let date01 = data.list[0].dt_txt;
-        let date01String = date01.substr(0,10);
+        let date0 = groupedDateAndTemp[0].date;
+        let date0String = date0.substr(0,10);
 
         document.getElementById("citylocation").textContent = `${data.city.name},`;
         document.getElementById("country").textContent = data.city.country;
         document.getElementById("current01").src= current01src;
         document.getElementById("current01description").textContent = data.list[0].weather[0].description;
-        document.getElementById("date").textContent = date01String;
+        document.getElementById("date").textContent = date0String;
      })
      .catch((error) => console.log(error))
 
@@ -77,3 +79,69 @@ document.addEventListener('keydown',function(event){
         weatherData();
     }
 });
+
+function groupDateAndTemp(data) {
+    let object = data.list;
+    let dateAndTemp = [];
+    let groupedDateAndTemp = [];
+    
+    for(const element of object) {
+        let initialObject = {};
+        //push object.dt_txt to initial object 
+        let dateinit = element.dt_txt;
+        let dateString = dateinit.substr(0,10);
+        initialObject.date = dateString;
+        //push object.main.max_temp to inital object
+        initialObject.maxTemp = (element.main.temp_max);
+        //push object.main.min_temp to inital object
+        initialObject.minTemp = (element.main.temp_min);
+        dateAndTemp.push(initialObject);
+    }
+    console.log(dateAndTemp);
+    
+    for(let i=0; i<=dateAndTemp.length-1; i++){
+        let targetDate = dateAndTemp[i].date;
+        if(i>=1) {
+            let counter = groupedDateAndTemp.filter(item => item.date===targetDate);
+                if(counter.length>0) {
+                    continue;
+                } else {
+                    let temperaturesForDate = dateAndTemp.filter(item => item.date===targetDate);
+                    
+                    let maxTempInit = [];
+                    let minTempInit = [];
+                        for(const item of temperaturesForDate){
+                            maxTempInit.push(item.maxTemp);
+                            minTempInit.push(item.minTemp);
+                        }
+                    let objectInit = {
+                        date: targetDate,
+                        maxTemp: maxTempInit,
+                        minTemp: minTempInit,
+                    };
+                    
+                    groupedDateAndTemp.push(objectInit); 
+                    console.log(groupedDateAndTemp);
+                }  
+        } else {
+            let temperaturesForDate = dateAndTemp.filter(item => item.date===targetDate);
+            
+            let maxTempInit = [];
+            let minTempInit = [];
+                for(const item of temperaturesForDate){
+                    maxTempInit.push(item.maxTemp);
+                    minTempInit.push(item.minTemp);
+                }
+            let objectInit = {
+                date: targetDate,
+                maxTemp: maxTempInit,
+                minTemp: minTempInit,
+            };
+            
+            groupedDateAndTemp.push(objectInit);
+            console.log(groupedDateAndTemp); 
+        }
+    
+    }
+    return groupedDateAndTemp;
+}
