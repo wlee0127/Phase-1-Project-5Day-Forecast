@@ -228,19 +228,46 @@ function card2(groupedDateAndTemp) {
     p01.textContent = `Min: ${minTemp(i,groupedDateAndTemp)} F`;
     heading5.appendChild(p01);
 
+    let dragging = false;
+    //these variables holds the displace value of the drag object.  Will be of use in the drag function.
+    let offsetX = null;
+    let offsetY = null;
+
+    newDiv2.addEventListener("mousedown", function(event){
+        dragging = true;
+        //calculate offset x and y value.  These values will be passed to mousemove event listener.
+        offsetX = event.clientX-newDiv2.getBoundingClientRect().left;
+        offsetY = event.clientY-newDiv2.getBoundingClientRect().top;
+    });
+    
+    document.addEventListener("mousemove", function(event){
+        if (dragging) {
+            let x = event.clientX-offsetX;
+            let y = event.clientY-offsetY;
+    
+            newDiv2.style.left = x+"px";
+            newDiv2.style.top = y+"px";
+        }else{
+            return;
+        }
+    });
+    
+    document.addEventListener("mouseup", function(event){
+        dragging = false;
+    });
     
 }
 
 function card3(groupedDateAndTemp) {
     let i = 2;
 
-    const newDiv2 = document.createElement('div');
-    newDiv2.class = "forecastCard";
-    newDiv2.id = "weatherContainer03";
-    document.body.appendChild(newDiv2);
+    const newDiv3 = document.createElement('div');
+    newDiv3.class = "forecastCard";
+    newDiv3.id = "weatherContainer03";
+    document.body.appendChild(newDiv3);
 
     const heading5 = document.createElement("h5");
-    newDiv2.appendChild(heading5);
+    newDiv3.appendChild(heading5);
 
     const p02 = document.createElement("p");
     p02.id = "date3";
@@ -257,19 +284,41 @@ function card3(groupedDateAndTemp) {
     p01.textContent = `Min: ${minTemp(i,groupedDateAndTemp)} F`;
     heading5.appendChild(p01);
 
+    newDiv3.addEventListener("mousedown", function(event){
+        dragging = true;
+        //calculate offset x and y value.  These values will be passed to mousemove event listener.
+        offsetX = event.clientX-newDiv3.getBoundingClientRect().left;
+        offsetY = event.clientY-newDiv3.getBoundingClientRect().top;
+    });
+    
+    document.addEventListener("mousemove", function(event){
+        if (dragging) {
+            let x = event.clientX-offsetX;
+            let y = event.clientY-offsetY;
+    
+            newDiv3.style.left = x+"px";
+            newDiv3.style.top = y+"px";
+        }else{
+            return;
+        }
+    });
+    
+    document.addEventListener("mouseup", function(event){
+        dragging = false;
+    });
     
 }
 
 function card4(groupedDateAndTemp) {
     let i = 3;
 
-    const newDiv2 = document.createElement('div');
-    newDiv2.class = "forecastCard";
-    newDiv2.id = "weatherContainer04";
-    document.body.appendChild(newDiv2);
+    const newDiv4 = document.createElement('div');
+    newDiv4.class = "forecastCard";
+    newDiv4.id = "weatherContainer04";
+    document.body.appendChild(newDiv4);
 
     const heading5 = document.createElement("h5");
-    newDiv2.appendChild(heading5);
+    newDiv4.appendChild(heading5);
 
     const p02 = document.createElement("p");
     p02.id = "date4";
@@ -286,19 +335,41 @@ function card4(groupedDateAndTemp) {
     p01.textContent = `Min: ${minTemp(i,groupedDateAndTemp)} F`;
     heading5.appendChild(p01);
 
+    newDiv4.addEventListener("mousedown", function(event){
+        dragging = true;
+        //calculate offset x and y value.  These values will be passed to mousemove event listener.
+        offsetX = event.clientX-newDiv4.getBoundingClientRect().left;
+        offsetY = event.clientY-newDiv4.getBoundingClientRect().top;
+    });
+    
+    document.addEventListener("mousemove", function(event){
+        if (dragging) {
+            let x = event.clientX-offsetX;
+            let y = event.clientY-offsetY;
+    
+            newDiv4.style.left = x+"px";
+            newDiv4.style.top = y+"px";
+        }else{
+            return;
+        }
+    });
+    
+    document.addEventListener("mouseup", function(event){
+        dragging = false;
+    });
     
 }
 
 function card5(groupedDateAndTemp) {
     let i = 4;
 
-    const newDiv2 = document.createElement('div');
-    newDiv2.class = "forecastCard";
-    newDiv2.id = "weatherContainer05";
-    document.body.appendChild(newDiv2);
+    const newDiv5 = document.createElement('div');
+    newDiv5.class = "forecastCard";
+    newDiv5.id = "weatherContainer05";
+    document.body.appendChild(newDiv5);
 
     const heading5 = document.createElement("h5");
-    newDiv2.appendChild(heading5);
+    newDiv5.appendChild(heading5);
 
     const p02 = document.createElement("p");
     p02.id = "date5";
@@ -315,5 +386,26 @@ function card5(groupedDateAndTemp) {
     p01.textContent = `Min: ${minTemp(i,groupedDateAndTemp)} F`;
     heading5.appendChild(p01);
 
+    newDiv5.addEventListener("mousedown", function(event){
+        dragging = true;
+        //calculate offset x and y value.  These values will be passed to mousemove event listener.
+        offsetX = event.clientX-newDiv5.getBoundingClientRect().left;
+        offsetY = event.clientY-newDiv5.getBoundingClientRect().top;
+    });
     
+    document.addEventListener("mousemove", function(event){
+        if (dragging) {
+            let x = event.clientX-offsetX;
+            let y = event.clientY-offsetY;
+    
+            newDiv5.style.left = x+"px";
+            newDiv5.style.top = y+"px";
+        }else{
+            return;
+        }
+    });
+    
+    document.addEventListener("mouseup", function(event){
+        dragging = false;
+    });
 }
