@@ -16,10 +16,7 @@ function weatherData(){
      }) 
      .then((data) => {
         let groupedDateAndTemp = groupDateAndTemp(data);
-        let icon01 = data.list[0].weather[0].icon;
-        let current01src="https://openweathermap.org/img/wn/"+icon01+"@2x.png";
-        document.getElementById("current01").src= current01src;
-        document.getElementById("current01description").textContent = data.list[0].weather[0].description;
+        
 
         card0(data,groupedDateAndTemp);
      })
@@ -109,26 +106,68 @@ function average(array) {
     return average;
 }
 
-function kelvinToFahr(temp) {
-    let result = (temp-273.15)*(9/5)+32;
-    result = result.toString();
-    result = result.substr(0,4);
-    return result;
+function maxTemp(groupedDateAndTemp) {
+    let array1 = groupedDateAndTemp[0].maxTemp;
+    let max = Math.max(...array1);
+    max = (max-273.15)*(9/5)+32;
+    max = max.toString();
+    max = max.substr(0,4);
+    return max;
+}
+
+function minTemp(groupedDateAndTemp) {
+    let array1 = groupedDateAndTemp[0].minTemp;
+    let max = Math.min(...array1);
+    max = (max-273.15)*(9/5)+32;
+    max = max.toString();
+    max = max.substr(0,4);
+    return max;
 }
 
 function card0(data,groupedDateAndTemp) {
-    let date0 = groupedDateAndTemp[0].date;
-    let date0String = date0.substr(0,10);
+    let icon01 = data.list[0].weather[0].icon;
+    let current01src="https://openweathermap.org/img/wn/"+icon01+"@2x.png";
 
-    document.getElementById("citylocation").textContent = `${data.city.name},`;
-    document.getElementById("country").textContent = data.city.country;
-    document.getElementById("date").textContent = date0String;
-    let array1 = groupedDateAndTemp[0].maxTemp;
-    let array2 = groupedDateAndTemp[0].minTemp;
-    let max = Math.max(...array1);
-    let min = Math.min(...array2);
-    document.getElementById("maxTemp").textContent = `Max: ${kelvinToFahr(max)} F`;
-    document.getElementById("minTemp").textContent = `Min: ${kelvinToFahr(min)} F`;
+    const newDiv = document.createElement('div');
+    newDiv.class = "card";
+    newDiv.id = "weatherContainer01";
+    document.body.appendChild(newDiv);
+
+    const heading3 = document.createElement("h3");
+    newDiv.appendChild(heading3);
+
+    const span00 = document.createElement("span");
+    span00.id = "citylocation";
+    span00.textContent = `${data.city.name},`;
+    heading3.appendChild(span00);
+
+    const span01 = document.createElement("span");
+    span01.id = "country";
+    span01.textContent = data.city.country;
+    heading3.appendChild(span01);
+
+    const img0 = document.createElement("img");
+    img0.id = "current01";
+    img0.src = current01src;
+    newDiv.appendChild(img0);
+
+    const heading5 = document.createElement("h5");
+    newDiv.appendChild(heading5);
+
+    const p00 = document.createElement("p");
+    p00.id = "maxTemp";
+    p00.textContent = `Max: ${maxTemp(groupedDateAndTemp)} F`;
+    heading5.appendChild(p00);
+
+    const p01 = document.createElement("p");
+    p01.id = "minTemp";
+    p01.textContent = `Min: ${minTemp(groupedDateAndTemp)} F`;
+    heading5.appendChild(p01);
+
+    const p02 = document.createElement("p");
+    p02.id = "date0";
+    p02.textContent = groupedDateAndTemp[0].date;
+    heading5.appendChild(p02);
 }
 
 function card1(data,groupedDateAndTemp) {
