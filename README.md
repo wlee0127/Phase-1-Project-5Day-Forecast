@@ -56,9 +56,9 @@ None
 
 # Acknowledgements
 
-Openweathermap.org/API
-Vecteezy.com
-GitHub pages
-MDN web docs
+1. Openweathermap.org/API
+2. Vecteezy.com
+3. GitHub pages
+4. MDN web docs
 
 
