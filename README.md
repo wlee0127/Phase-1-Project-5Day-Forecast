@@ -1,7 +1,7 @@
 # Phase-1-Project-5Day-Forecast
 
 # 5-Day-Temperature-Forecast
- 5-Day-Temeprature-Forecast is a web application that will return the next 5 days maximum and minimum temeprature data of a city.
+ 5-Day-Temeprature-Forecast is a web application that will return the next 5 days maximum and minimum temperature data of a city.
 
 
 # Installation
@@ -16,7 +16,7 @@ User should enter the city for which they want to check the weather in the input
 ![Alt text](image-1.png)
 
   
-Application will return 5 containers, displaying the maximum and minimum temeprature of the city for the next 5 days.
+Application will return 5 containers, displaying the maximum and minimum temperature of the city for the next 5 days.
 
 
 ![Alt text](image-2.png)
@@ -28,7 +28,7 @@ Application has a drag and move feature which will allow the user to drag and re
 ![Alt text](image-3.png)
 
 
-Previous results will not dissapear, allowing the user to continue adding further entries onto the browser window.
+Previous results will not dissapear, allowing the user to stack further entries onto the browser window.
 
 
 ![Alt text](image-4.png)
@@ -38,7 +38,7 @@ Previous results will not dissapear, allowing the user to continue adding furthe
 
 Add a refresh feature/button for each container element. 
 
-Implement a dialog box that will display an error message if city is not found. 
+Implement a dialog box that will display an error message if the user's entry is not found. 
 
 
 # Contributing
