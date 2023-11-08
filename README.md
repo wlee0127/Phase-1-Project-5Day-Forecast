@@ -28,7 +28,37 @@ Application has a drag and move feature which will allow the user to drag and re
 ![Alt text](image-3.png)
 
 
-Previous results will not dissapear, allowing the user to continue adding further entries to teh browser window.
+Previous results will not dissapear, allowing the user to continue adding further entries onto the browser window.
 
 
 ![Alt text](image-4.png)
+
+
+# Roadmap
+
+Add a refresh feature/button for each container element. 
+
+Implement a dialog box that will display an error message if city is not found. 
+
+
+# Contributing
+
+1. Fork the project.
+2. Create your feature branch. (git checkout -b feature/...)
+3. Commit your changes. (git commit -m "added feature")
+4. Push to the branch. (git push origin feature/...)
+5. Open a pull request.
+
+# License
+
+None
+
+
+# Acknowledgements
+
+Openweathermap.org/API
+Vecteezy.com
+GitHub pages
+MDN web docs
+
+
