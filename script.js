@@ -18,29 +18,36 @@ function weatherData() {
     //api call #1 -- for current weather condition
     fetch(api_weather+location+"&appid="+api_key)
      .then((response) => {
+        //if response.ok is true (response successful), parse the json and return it as javascript
         if (response.ok) return response.json();
+        //else, if response not successful, throw an error message w/ alert box.
+        //note, response not successful does not equal an error. If unfound city name is entered, an error is not returned instead an unsuccessful response is returned.
+        //the .catch() method will not cath any errors thus we need to use response.ok method for testing
         else throw new Error(window.alert(response.status + " try a different city"));
      }) 
      .then((data) => {
+        //using groupDateAndTemp function to sort and group my returned data and assigning the result to variable "groupedDateAndTemp"
         let groupedDateAndTemp = groupDateAndTemp(data);
-    
+        //each card function is responsible for generating a weather data container element for a specific date.
+        //i am only passing "data" into card0 because only card0 will be displaying the weather icon(pic), which is information stored in "data" and not in my sorted array.
         card0(data,groupedDateAndTemp);
         card2(groupedDateAndTemp);
         card3(groupedDateAndTemp);
         card4(groupedDateAndTemp);
         card5(groupedDateAndTemp);
      })
-     .catch((error) => console.log(error)) 
+     //.catch() method will catch network errors, API key errors, URL errors, failure to fetch errors...
+     .catch((error) => {console.log(error)}) 
 }
 
 function groupDateAndTemp(data) {
     let object = data.list;
     let dateAndTemp = [];
     let groupedDateAndTemp = [];
-    
+    //iterating through each element of my object=(data.list)
     for(const element of object) {
         let initialObject = {};
-        //push object.dt_txt to initial object 
+        //i only want the first 10 char of my "element.dt_txt" string
         let dateinit = element.dt_txt;
         let dateString = dateinit.substr(0,10);
         initialObject.date = dateString;
