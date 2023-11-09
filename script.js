@@ -200,24 +200,35 @@ function card0(data,groupedDateAndTemp) {
     heading5.appendChild(p01);
 
     let dragging = false;
-    //these variables holds the displace value of the drag object.  Will be of use in the drag function.
-    let offsetX = null;
-    let offsetY = null;
+    //these variables holds the displace value of the drag object.  Declaring them as null, will be calling them in the callback functions in mousedown, mousemove.
+    let initialX = null;
+    let initialY = null;
 
     newDiv.addEventListener("mousedown", function(event){
+        //assign a true value to the dragging variable
         dragging = true;
         //calculate offset x and y value.  These values will be passed to mousemove event listener.
-        offsetX = event.clientX-newDiv.getBoundingClientRect().left;
-        offsetY = event.clientY-newDiv.getBoundingClientRect().top;
+        //offsetX is the distance in the x-axis between the current cursor position and the left edge of my element
+        //clientRect().left returns the distance in x-axis between the left edge of my element to left edge of window/viewport. 
+        /*
+        offsetX = event.clientX;
+        offsetY = event.clientY;
+        */
+       
+       initialX = event.clientX-newDiv.getBoundingClientRect().left;
+       initialY = event.clientY-newDiv.getBoundingClientRect().top;
     });
     
     document.addEventListener("mousemove", function(event){
+        //if dragging is true, which was assigned true once mousedown is initiated
+        //x is the displacement valueclientx(current x location of cursor relative to edge of viewport) -  offsetx()  
+        //its value represents the displacement between the cursor's prior position and the cursors current position
         if (dragging) {
-            let x = event.clientX-offsetX;
-            let y = event.clientY-offsetY;
+            let dx = event.clientX-initialX;
+            let dy = event.clientY-initialY;
     
-            newDiv.style.left = x+"px";
-            newDiv.style.top = y+"px";
+            newDiv.style.left = dx+"px";
+            newDiv.style.top = dy+"px";
         }else{
             return;
         }
@@ -255,24 +266,22 @@ function card2(groupedDateAndTemp) {
     heading5.appendChild(p01);
 
     let dragging = false;
-    //these variables holds the displace value of the drag object.  Will be of use in the drag function.
-    let offsetX = null;
-    let offsetY = null;
+    let initialX = null;
+    let initialY = null;
 
     newDiv2.addEventListener("mousedown", function(event){
         dragging = true;
-        //calculate offset x and y value.  These values will be passed to mousemove event listener.
-        offsetX = event.clientX-newDiv2.getBoundingClientRect().left;
-        offsetY = event.clientY-newDiv2.getBoundingClientRect().top;
+        initialX = event.clientX-newDiv2.getBoundingClientRect().left;
+        initialY = event.clientY-newDiv2.getBoundingClientRect().top;
     });
     
     document.addEventListener("mousemove", function(event){
         if (dragging) {
-            let x = event.clientX-offsetX;
-            let y = event.clientY-offsetY;
+            let dx = event.clientX-initialX;
+            let dy = event.clientY-initialY;
     
-            newDiv2.style.left = x+"px";
-            newDiv2.style.top = y+"px";
+            newDiv2.style.left = dx+"px";
+            newDiv2.style.top = dy+"px";
         }else{
             return;
         }
@@ -311,26 +320,24 @@ function card3(groupedDateAndTemp) {
     heading5.appendChild(p01);
 
     let dragging = false;
-    //these variables holds the displace value of the drag object.  Will be of use in the drag function.
-    let offsetX = null;
-    let offsetY = null;
+    let initialX = null;
+    let initialY = null;
 
     newDiv3.addEventListener("mousedown", function(event){
         dragging = true;
         debugger;
-        //calculate offset x and y value.  These values will be passed to mousemove event listener.
-        offsetX = event.clientX-newDiv3.getBoundingClientRect().left;
-        offsetY = event.clientY-newDiv3.getBoundingClientRect().top;
+        initialX = event.clientX-newDiv3.getBoundingClientRect().left;
+        initialY = event.clientY-newDiv3.getBoundingClientRect().top;
         debugger;
     });
     
     document.addEventListener("mousemove", function(event){
         if (dragging) {
-            let x = event.clientX-offsetX;
-            let y = event.clientY-offsetY;
+            let dx = event.clientX-initialX;
+            let dy = event.clientY-initialY;
     
-            newDiv3.style.left = x+"px";
-            newDiv3.style.top = y+"px";
+            newDiv3.style.left = dx+"px";
+            newDiv3.style.top = dy+"px";
         }else{
             return;
         }
@@ -369,24 +376,22 @@ function card4(groupedDateAndTemp) {
     heading5.appendChild(p01);
 
     let dragging = false;
-    //these variables holds the displace value of the drag object.  Will be of use in the drag function.
-    let offsetX = null;
-    let offsetY = null;
+    let initialX = null;
+    let initialY = null;
 
     newDiv4.addEventListener("mousedown", function(event){
         dragging = true;
-        //calculate offset x and y value.  These values will be passed to mousemove event listener.
-        offsetX = event.clientX-newDiv4.getBoundingClientRect().left;
-        offsetY = event.clientY-newDiv4.getBoundingClientRect().top;
+        initialX = event.clientX-newDiv4.getBoundingClientRect().left;
+        initialY = event.clientY-newDiv4.getBoundingClientRect().top;
     });
     
     document.addEventListener("mousemove", function(event){
         if (dragging) {
-            let x = event.clientX-offsetX;
-            let y = event.clientY-offsetY;
+            let dx = event.clientX-initialX;
+            let dy = event.clientY-initialY;
     
-            newDiv4.style.left = x+"px";
-            newDiv4.style.top = y+"px";
+            newDiv4.style.left = dx+"px";
+            newDiv4.style.top = dy+"px";
         }else{
             return;
         }
@@ -425,24 +430,22 @@ function card5(groupedDateAndTemp) {
     heading5.appendChild(p01);
 
     let dragging = false;
-    //these variables holds the displace value of the drag object.  Will be of use in the drag function.
-    let offsetX = null;
-    let offsetY = null;
+    let initialX = null;
+    let initialY = null;
 
     newDiv5.addEventListener("mousedown", function(event){
         dragging = true;
-        //calculate offset x and y value.  These values will be passed to mousemove event listener.
-        offsetX = event.clientX-newDiv5.getBoundingClientRect().left;
-        offsetY = event.clientY-newDiv5.getBoundingClientRect().top;
+        initialX = event.clientX-newDiv5.getBoundingClientRect().left;
+        initialY = event.clientY-newDiv5.getBoundingClientRect().top;
     });
     
     document.addEventListener("mousemove", function(event){
         if (dragging) {
-            let x = event.clientX-offsetX;
-            let y = event.clientY-offsetY;
+            let dx = event.clientX-initialX;
+            let dy = event.clientY-initialY;
     
-            newDiv5.style.left = x+"px";
-            newDiv5.style.top = y+"px";
+            newDiv5.style.left = dx+"px";
+            newDiv5.style.top = dy+"px";
         }else{
             return;
         }
