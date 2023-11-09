@@ -47,32 +47,37 @@ function groupDateAndTemp(data) {
     //iterating through each element of my object=(data.list)
     for(const element of object) {
         let initialObject = {};
-        //i only want the first 10 char of my "element.dt_txt" string
+        //only extract the first 10 char of my "element.dt_txt" string
         let dateinit = element.dt_txt;
         let dateString = dateinit.substr(0,10);
         initialObject.date = dateString;
-        //push object.main.max_temp to inital object
+        //declare initialobject.maxtemp 
         initialObject.maxTemp = (element.main.temp_max);
-        //push object.main.min_temp to inital object
+        //declare initialobject.mintemp
         initialObject.minTemp = (element.main.temp_min);
+        //push initial object into dateAndTemp array
         dateAndTemp.push(initialObject);
     }
-    console.log(dateAndTemp);
-    
+    //console.log(dateAndTemp);
+    //iterate through dateAndTemp array. Goal is to group all temperature data by date.
     for(let i=0; i<=dateAndTemp.length-1; i++){
         let targetDate = dateAndTemp[i].date;
         if(i>=1) {
-            let counter = groupedDateAndTemp.filter(item => item.date===targetDate);
-                if(counter.length>0) {
+            //filter thru groupedDateAndTemp for targetDate.  if instances of targetDate is greater than 0, continue on to next block of code. 
+            let instances = groupedDateAndTemp.filter(element => element.date===targetDate);
+                if(instances.length>0) {
+                    //if an instance of targetDate already exist in groupedDateAndTemp, skip to next iteration.  All temp data pertaining to that date has
+                    //been extracted on a prior iteration when no instances of targetDate existed. 
                     continue;
                 } else {
-                    let temperaturesForDate = dateAndTemp.filter(item => item.date===targetDate);
+                    //when no instance of targetDate exist (counter.length>0 returns false) run the following operation.
+                    let temperaturesForDate = dateAndTemp.filter(element => element.date===targetDate);
                     
                     let maxTempInit = [];
                     let minTempInit = [];
-                        for(const item of temperaturesForDate){
-                            maxTempInit.push(item.maxTemp);
-                            minTempInit.push(item.minTemp);
+                        for(const element of temperaturesForDate){
+                            maxTempInit.push(element.maxTemp);
+                            minTempInit.push(element.minTemp);
                         }
                     let objectInit = {
                         date: targetDate,
@@ -81,25 +86,39 @@ function groupDateAndTemp(data) {
                     };
                     
                     groupedDateAndTemp.push(objectInit); 
-                    console.log(groupedDateAndTemp);
                 }  
         } else {
-            let temperaturesForDate = dateAndTemp.filter(item => item.date===targetDate);
-            
+            /*to handle the first iteration when i=0. 
+            filter through dateAndTemp and create a copy array of the elements with an element.date value equal to the target date
+            */
+            let temperaturesForDate = dateAndTemp.filter(element => element.date===targetDate);
+            /*
+            0:{date: '2023-11-10', maxTemp: 283.23, minTemp: 282.69}
+            1:{date: '2023-11-10', maxTemp: 282.86, minTemp: 282.12}
+            2:{date: '2023-11-10', maxTemp: 282.82, minTemp: 282.62}
+            3:{date: '2023-11-10', maxTemp: 283.42, minTemp: 283.42}
+            4:{date: '2023-11-10', maxTemp: 284.01, minTemp: 284.01}
+            5:{date: '2023-11-10', maxTemp: 283.31, minTemp: 283.31}
+            */
+            //push each max and min temp value into an array
             let maxTempInit = [];
             let minTempInit = [];
-                for(const item of temperaturesForDate){
-                    maxTempInit.push(item.maxTemp);
-                    minTempInit.push(item.minTemp);
+                for(const element of temperaturesForDate){
+                    maxTempInit.push(element.maxTemp);
+                    minTempInit.push(element.minTemp);
                 }
             let objectInit = {
                 date: targetDate,
                 maxTemp: maxTempInit,
                 minTemp: minTempInit,
             };
-            
-            groupedDateAndTemp.push(objectInit);
-            console.log(groupedDateAndTemp); 
+            /*
+            object consisting of temperature arrays and date will get pushed to the groupedDateAndTemp array.
+            "2023-11-10"
+            maxTemp: (6) [283.23, 282.86, 282.82, 283.42, 284.01, 283.31]
+            minTemp: (6) [282.69, 282.12, 282.62, 283.42, 284.01, 283.31]
+            */
+            groupedDateAndTemp.push(objectInit); 
         }
     
     }
