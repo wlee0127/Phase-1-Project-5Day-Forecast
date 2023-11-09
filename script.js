@@ -19,7 +19,7 @@ function weatherData() {
     fetch(api_weather+location+"&appid="+api_key)
      .then((response) => {
         if (response.ok) return response.json();
-        else throw new Error(document.getElementById("citylocation").textContent = response.status + " try a different city");
+        else throw new Error(window.alert(response.status + " try a different city"));
      }) 
      .then((data) => {
         let groupedDateAndTemp = groupDateAndTemp(data);
