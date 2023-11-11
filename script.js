@@ -208,11 +208,11 @@ function card0(data,groupedDateAndTemp) {
         //assign a true value to the dragging variable
         dragging = true;
         //calculate offset x and y value.  These values will be passed to mousemove event listener.
-        //offsetX is the distance in the x-axis between the current cursor position and the left edge of my element
+        //offsetX is the distance in the x-axis between the current cursor position and the left edge of my element. This is the starting point in reference to the element.
         //clientRect().left returns the distance in x-axis between the left edge of my element to left edge of window/viewport. 
         /*
-        offsetX = event.clientX;
-        offsetY = event.clientY;
+        initialX = event.clientX;
+        initialY = event.clientY;
         */
        
        initialX = event.clientX-newDiv.getBoundingClientRect().left;
@@ -221,7 +221,7 @@ function card0(data,groupedDateAndTemp) {
     
     document.addEventListener("mousemove", function(event){
         //if dragging is true, which was assigned true once mousedown is initiated
-        //x is the displacement valueclientx(current x location of cursor relative to edge of viewport) -  offsetx()  
+        //x is the displacement value, = valueclientx(current x location of cursor relative to edge of viewport) -  offsetx()  
         //its value represents the displacement between the cursor's prior position and the cursors current position
         if (dragging) {
             let dx = event.clientX-initialX;
