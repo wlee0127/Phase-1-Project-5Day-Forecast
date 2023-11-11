@@ -207,10 +207,10 @@ function card0(data,groupedDateAndTemp) {
     newDiv.addEventListener("mousedown", function(event){
         //assign a true value to the dragging variable
         dragging = true;
-        //calculate offset x and y value.  These values will be passed to mousemove event listener.
-        //offsetX is the distance in the x-axis between the current cursor position and the left edge of my element. This is the starting point in reference to the element.
-        //clientRect().left returns the distance in x-axis between the left edge of my element to left edge of window/viewport. 
-        /*
+        /*calculate initial x and y position value relative to the draggable element.  These values will be passed to mousemove event listener.
+        initialX is the distance in the x-axis between the current cursor position and the left edge of my element. This is the starting point in reference to the element.
+        this dictates where the initial position of the element must be upon the first click of the mouse.  upon first click the element is actuall ybeing repositioned.
+        clientRect().left returns the distance in x-axis between the left edge of my element to left edge of window/viewport. 
         initialX = event.clientX;
         initialY = event.clientY;
         */
