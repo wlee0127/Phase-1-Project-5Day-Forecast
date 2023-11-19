@@ -141,16 +141,6 @@ function groupDateAndTemp(data) {
     return groupedDateAndTemp;
 }
 
-function average(array) {
-    let sum = array.reduce(
-        (accumulator,current) => accumulator+current,
-        0,
-    );
-    let average = sum/array.length;
-    average = (average-273.15)*(9/5)+32;
-    return average;
-}
-
 function maxTemp(i,groupedDateAndTemp) {
     let array1 = groupedDateAndTemp[i].maxTemp;
     let max = Math.max(...array1);
