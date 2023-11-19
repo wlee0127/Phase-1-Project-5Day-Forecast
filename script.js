@@ -1,4 +1,6 @@
 
+let containerCounter = false;
+
 document.addEventListener("keydown",function(event){
     const pressedKey=event.key;
     if (pressedKey==='Enter'){
@@ -30,11 +32,25 @@ function weatherData() {
         let groupedDateAndTemp = groupDateAndTemp(data);
         //each card function is responsible for generating a weather data container element for a specific date.
         //i am only passing "data" into card0 because only card0 will be displaying the weather icon(pic), which is information stored in "data" and not in my sorted array.
-        card0(data,groupedDateAndTemp);
-        card2(groupedDateAndTemp);
-        card3(groupedDateAndTemp);
-        card4(groupedDateAndTemp);
-        card5(groupedDateAndTemp);
+        
+        if(containerCounter===true){
+            const newDiv2 = document.getElementById("weatherContainer02");
+            const newDiv3 = document.getElementById("weatherContainer03");
+            const newDiv4 = document.getElementById("weatherContainer04");
+            const newDiv5 = document.getElementById("weatherContainer05");
+            newDiv2.remove();
+            newDiv3.remove();
+            newDiv4.remove();
+            newDiv5.remove();
+        }else{}
+
+        container0(data,groupedDateAndTemp);
+        container2(groupedDateAndTemp);
+        container3(groupedDateAndTemp);
+        container4(groupedDateAndTemp);
+        container5(groupedDateAndTemp);
+
+        containerCounter=true;
      })
      //.catch() method will catch network errors, API key errors, URL errors, failure to fetch errors...
      .catch((error) => {console.log(error)}) 
@@ -153,7 +169,7 @@ function minTemp(i,groupedDateAndTemp) {
     return max;
 }
 
-function card0(data,groupedDateAndTemp) {
+function container0(data,groupedDateAndTemp) {
     let icon01 = data.list[0].weather[0].icon;
     let current01src="https://openweathermap.org/img/wn/"+icon01+"@2x.png";
     let i = 0;
@@ -239,7 +255,7 @@ function card0(data,groupedDateAndTemp) {
     });
 }
 
-function card2(groupedDateAndTemp) {
+function container2(groupedDateAndTemp) {
     let i = 1;
 
     const newDiv2 = document.createElement('div');
@@ -293,7 +309,7 @@ function card2(groupedDateAndTemp) {
     
 }
 
-function card3(groupedDateAndTemp) {
+function container3(groupedDateAndTemp) {
     let i = 2;
 
     const newDiv3 = document.createElement('div');
@@ -349,7 +365,7 @@ function card3(groupedDateAndTemp) {
     
 }
 
-function card4(groupedDateAndTemp) {
+function container4(groupedDateAndTemp) {
     let i = 3;
 
     const newDiv4 = document.createElement('div');
@@ -403,7 +419,7 @@ function card4(groupedDateAndTemp) {
     
 }
 
-function card5(groupedDateAndTemp) {
+function container5(groupedDateAndTemp) {
     let i = 4;
 
     const newDiv5 = document.createElement('div');
